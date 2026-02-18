@@ -467,11 +467,12 @@
             
             // Préparer les données
             const cotisationData = {
-                numero_membre: membre.numero,
-                section: membre.section,
+                numero_carte: numeroCarte,  // <-- Ajouter ici
+                prenom: prenom,
+                nom: nom,
+                telephone: telephone,
                 type: selectedType,
                 detail: detail,
-                montant: 0, // Sera renseigné après paiement
                 date: new Date().toISOString(),
                 statut: 'en_attente'
             };
