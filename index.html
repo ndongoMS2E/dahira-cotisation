@@ -5,12 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Cotisation - Diamyatoul Birri Wal Islah</title>
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             background: linear-gradient(135deg, #1a472a 0%, #2d5016 100%);
@@ -18,10 +14,7 @@
             padding: 20px;
         }
 
-        .container {
-            max-width: 400px;
-            margin: 0 auto;
-        }
+        .container { max-width: 400px; margin: 0 auto; }
 
         /* Header */
         .header {
@@ -35,8 +28,7 @@
             height: 80px;
             margin-bottom: 10px;
             border-radius: 50%;
-            background: white;
-            padding: 5px;
+            object-fit: cover;
         }
 
         .header h1 {
@@ -66,7 +58,7 @@
             gap: 15px;
             padding-bottom: 15px;
             border-bottom: 2px solid #e8f5e9;
-            margin-bottom: 15px;
+            margin-bottom: 20px;
         }
 
         .member-avatar {
@@ -92,7 +84,7 @@
             color: #666;
         }
 
-        /* Type Selection */
+        /* Section Title */
         .section-title {
             font-size: 13px;
             font-weight: 600;
@@ -100,6 +92,7 @@
             margin-bottom: 10px;
         }
 
+        /* Type Selection */
         .type-buttons {
             display: flex;
             gap: 10px;
@@ -108,7 +101,7 @@
 
         .type-btn {
             flex: 1;
-            padding: 15px;
+            padding: 15px 10px;
             border: 2px solid #e0e0e0;
             border-radius: 12px;
             background: white;
@@ -117,166 +110,72 @@
             transition: all 0.3s;
         }
 
-        .type-btn:hover {
-            border-color: #228B22;
-        }
+        .type-btn:hover { border-color: #228B22; }
 
         .type-btn.active {
             border-color: #006400;
             background: #e8f5e9;
         }
 
-        .type-btn .icon {
-            font-size: 28px;
-            margin-bottom: 5px;
-        }
+        .type-btn .icon { font-size: 28px; margin-bottom: 5px; }
+        .type-btn .label { font-size: 12px; font-weight: 600; color: #333; }
 
-        .type-btn .label {
-            font-size: 12px;
-            font-weight: 600;
-            color: #333;
-        }
-
-        /* Options Grid */
-        .options-grid {
+        /* Grid pour mois et événements */
+        .selection-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
-            gap: 8px;
+            gap: 10px;
             margin-bottom: 20px;
         }
 
-        .option-btn {
-            padding: 12px 8px;
+        .grid-btn {
+            padding: 15px 8px;
             border: 2px solid #e0e0e0;
             border-radius: 10px;
             background: white;
             cursor: pointer;
             text-align: center;
-            transition: all 0.3s;
             font-size: 11px;
             font-weight: 600;
             color: #333;
+            transition: all 0.3s;
+            min-height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
 
-        .option-btn:hover {
+        .grid-btn:hover {
             border-color: #228B22;
             background: #f5fff5;
         }
 
-        .option-btn.selected {
+        .grid-btn.selected {
             border-color: #006400;
             background: #006400;
             color: white;
         }
 
-        .option-btn.paid {
-            border-color: #4CAF50;
+        /* Hidden */
+        .hidden { display: none !important; }
+
+        /* Info Box */
+        .info-box {
             background: #e8f5e9;
-            color: #2e7d32;
-            position: relative;
-        }
-
-        .option-btn.paid::after {
-            content: '✓';
-            position: absolute;
-            top: 2px;
-            right: 5px;
-            font-size: 10px;
-        }
-
-        /* Khitma List */
-        .khitma-list {
-            display: none;
-            flex-direction: column;
-            gap: 10px;
+            border: 1px solid #a5d6a7;
+            border-radius: 10px;
+            padding: 12px;
             margin-bottom: 20px;
-        }
-
-        .khitma-list.active {
-            display: flex;
-        }
-
-        .khitma-item {
-            padding: 15px;
-            border: 2px solid #e0e0e0;
-            border-radius: 12px;
-            background: white;
-            cursor: pointer;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            transition: all 0.3s;
-        }
-
-        .khitma-item:hover {
-            border-color: #228B22;
-        }
-
-        .khitma-item.selected {
-            border-color: #006400;
-            background: #e8f5e9;
-        }
-
-        .khitma-item .name {
-            font-weight: 600;
-            color: #333;
-            font-size: 13px;
-        }
-
-        .khitma-item .date {
-            font-size: 11px;
-            color: #666;
-        }
-
-        .khitma-item .amount {
-            font-weight: 700;
-            color: #006400;
-            font-size: 14px;
-        }
-
-        /* Months Grid */
-        .months-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 8px;
-            margin-bottom: 20px;
-        }
-
-        .months-grid.hidden {
-            display: none;
-        }
-
-        /* Amount Display */
-        .amount-display {
-            background: linear-gradient(135deg, #006400, #228B22);
-            border-radius: 12px;
-            padding: 20px;
-            text-align: center;
-            color: white;
-            margin-bottom: 20px;
-        }
-
-        .amount-display .label {
             font-size: 12px;
-            opacity: 0.9;
-            margin-bottom: 5px;
-        }
-
-        .amount-display .amount {
-            font-size: 32px;
-            font-weight: 700;
-        }
-
-        .amount-display .currency {
-            font-size: 16px;
-            opacity: 0.9;
+            color: #2e7d32;
+            text-align: center;
         }
 
         /* Pay Button */
         .pay-btn {
             width: 100%;
             padding: 18px;
-            background: linear-gradient(135deg, #1a237e 0%, #3949ab 100%);
+            background: linear-gradient(135deg, #1DC4E9 0%, #1BA4C4 100%);
             color: white;
             border: none;
             border-radius: 12px;
@@ -292,7 +191,7 @@
 
         .pay-btn:hover {
             transform: translateY(-2px);
-            box-shadow: 0 5px 20px rgba(26, 35, 126, 0.4);
+            box-shadow: 0 5px 20px rgba(29, 196, 233, 0.4);
         }
 
         .pay-btn:disabled {
@@ -300,11 +199,6 @@
             cursor: not-allowed;
             transform: none;
             box-shadow: none;
-        }
-
-        .pay-btn .wave-logo {
-            width: 24px;
-            height: 24px;
         }
 
         /* Footer */
@@ -315,59 +209,41 @@
             margin-top: 20px;
         }
 
-        /* Loading */
-        .loading {
-            display: none;
-            text-align: center;
-            padding: 40px;
-        }
-
-        .loading.active {
-            display: block;
-        }
-
-        .spinner {
-            width: 40px;
-            height: 40px;
-            border: 4px solid #e0e0e0;
-            border-top-color: #006400;
-            border-radius: 50%;
-            animation: spin 1s linear infinite;
-            margin: 0 auto 15px;
-        }
-
-        @keyframes spin {
-            to { transform: rotate(360deg); }
-        }
-
         /* Alert */
         .alert {
-            padding: 15px;
+            padding: 12px 15px;
             border-radius: 10px;
             margin-bottom: 15px;
             font-size: 13px;
             display: none;
         }
 
-        .alert.success {
-            background: #e8f5e9;
-            color: #2e7d32;
-            border: 1px solid #a5d6a7;
-        }
-
         .alert.error {
             background: #ffebee;
             color: #c62828;
             border: 1px solid #ef9a9a;
-        }
-
-        .alert.active {
             display: block;
         }
 
-        /* Hidden */
-        .hidden {
-            display: none !important;
+        /* Résumé sélection */
+        .selection-summary {
+            background: linear-gradient(135deg, #006400, #228B22);
+            border-radius: 12px;
+            padding: 15px;
+            margin-bottom: 20px;
+            color: white;
+            text-align: center;
+        }
+
+        .selection-summary .label {
+            font-size: 11px;
+            opacity: 0.9;
+            margin-bottom: 5px;
+        }
+
+        .selection-summary .value {
+            font-size: 14px;
+            font-weight: 700;
         }
     </style>
 </head>
@@ -375,7 +251,7 @@
     <div class="container">
         <!-- Header -->
         <div class="header">
-            <img src="logo.png" alt="Logo" class="logo">
+            <img src="logo.png" alt="Logo" class="logo" onerror="this.src='data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI4MCIgaGVpZ2h0PSI4MCIgdmlld0JveD0iMCAwIDgwIDgwIj48Y2lyY2xlIGN4PSI0MCIgY3k9IjQwIiByPSI0MCIgZmlsbD0iIzAwNjQwMCIvPjx0ZXh0IHg9IjQwIiB5PSI0OCIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZmlsbD0id2hpdGUiIGZvbnQtc2l6ZT0iMTQiIGZvbnQtZmFtaWx5PSJBcmlhbCIgZm9udC13ZWlnaHQ9ImJvbGQiPkRCV0k8L3RleHQ+PC9zdmc+'">
             <h1>DIAMYATOUL BIRRI WAL ISLAH</h1>
             <p>Système de cotisation</p>
         </div>
@@ -383,187 +259,135 @@
         <!-- Main Card -->
         <div class="card">
             <!-- Alert -->
-            <div class="alert" id="alert"></div>
+            <div id="alert"></div>
 
-            <!-- Loading -->
-            <div class="loading" id="loading">
-                <div class="spinner"></div>
-                <p>Chargement...</p>
+            <!-- Member Info -->
+            <div class="member-info">
+                <div class="member-avatar">👤</div>
+                <div class="member-details">
+                    <h2 id="memberNumber">DBWI-2025-0001</h2>
+                    <p id="memberSection">Section: ---</p>
+                </div>
             </div>
 
-            <!-- Content -->
-            <div id="content">
-                <!-- Member Info -->
-                <div class="member-info">
-                    <div class="member-avatar">👤</div>
-                    <div class="member-details">
-                        <h2 id="memberName">Chargement...</h2>
-                        <p id="memberNumber">---</p>
-                    </div>
+            <!-- Type Selection -->
+            <p class="section-title">Type de cotisation</p>
+            <div class="type-buttons">
+                <div class="type-btn active" data-type="mensuelle" onclick="selectType('mensuelle')">
+                    <div class="icon">📅</div>
+                    <div class="label">Mensuelle</div>
                 </div>
-
-                <!-- Type Selection -->
-                <p class="section-title">Type de cotisation</p>
-                <div class="type-buttons">
-                    <div class="type-btn active" data-type="mensuelle" onclick="selectType('mensuelle')">
-                        <div class="icon">📅</div>
-                        <div class="label">Mensuelle</div>
-                    </div>
-                    <div class="type-btn" data-type="khitma" onclick="selectType('khitma')">
-                        <div class="icon">📖</div>
-                        <div class="label">Khitma</div>
-                    </div>
+                <div class="type-btn" data-type="khitma" onclick="selectType('khitma')">
+                    <div class="icon">📖</div>
+                    <div class="label">Khitma</div>
                 </div>
-
-                <!-- Months Grid (for Mensuelle) -->
-                <div id="monthsSection">
-                    <p class="section-title">Sélectionner le(s) mois</p>
-                    <div class="months-grid" id="monthsGrid">
-                        <!-- Generated by JS -->
-                    </div>
-                </div>
-
-                <!-- Khitma List -->
-                <div class="khitma-list" id="khitmaSection">
-                    <p class="section-title">Sélectionner l'événement</p>
-                    <div id="khitmaList">
-                        <!-- Generated by JS -->
-                    </div>
-                </div>
-
-                <!-- Amount Display -->
-                <div class="amount-display">
-                    <div class="label">Montant à payer</div>
-                    <div>
-                        <span class="amount" id="totalAmount">0</span>
-                        <span class="currency">FCFA</span>
-                    </div>
-                </div>
-
-                <!-- Pay Button -->
-                <button class="pay-btn" id="payBtn" onclick="payerAvecWave()" disabled>
-                    <svg class="wave-logo" viewBox="0 0 24 24" fill="currentColor">
-                        <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
-                    </svg>
-                    Payer avec Wave
-                </button>
             </div>
+
+            <!-- Section Mensuelle -->
+            <div id="sectionMensuelle">
+                <p class="section-title">Sélectionner le(s) mois</p>
+                <div class="selection-grid" id="monthsGrid"></div>
+            </div>
+
+            <!-- Section Khitma -->
+            <div id="sectionKhitma" class="hidden">
+                <p class="section-title">Sélectionner l'événement</p>
+                <div class="selection-grid" id="khitmaGrid"></div>
+            </div>
+
+            <!-- Résumé -->
+            <div class="selection-summary" id="summary">
+                <div class="label">Sélection</div>
+                <div class="value" id="summaryText">Aucune sélection</div>
+            </div>
+
+            <!-- Info -->
+            <div class="info-box">
+                ℹ️ Vous serez redirigé vers Wave pour saisir le montant et effectuer le paiement.
+            </div>
+
+            <!-- Pay Button -->
+            <button class="pay-btn" id="payBtn" onclick="payerAvecWave()" disabled>
+                💳 Payer avec Wave
+            </button>
         </div>
 
         <!-- Footer -->
         <div class="footer">
-            <p>Diamyatoul Birri Wal Islah - Section Diamaguene</p>
-            <p>En cas de problème: 778788709 / 771751732</p>
+            <p>Diamyatoul Birri Wal Islah</p>
+            <p>Contact: 778788709 / 771751732</p>
         </div>
     </div>
 
     <script>
         // ========== CONFIGURATION ==========
         const CONFIG = {
-            // URL de ton Google Apps Script
-            SCRIPT_URL: 'https://script.google.com/macros/s/AKfycbxwDAhTrpHSkvi0bgtIIxx1KSPOYSg6hkQ16JajTwJfJygLimTRz66XF3ExPrTAUufH/exec',
-            
-            // Lien Wave marchand
-            WAVE_LINK: 'https://pay.wave.com/m/M_sn_0WdGh370xGcP/c/sn/',
-            
-            // Montant cotisation mensuelle (en FCFA)
-            MONTANT_MENSUEL: 1000,
-            
-            // Liste des Khitma avec montants
-            KHITMAS: [
-                { id: 'khitma1', nom: 'Khitma Mensuel', date: 'Chaque mois', montant: 500 },
-                { id: 'khitma2', nom: 'Gamou', date: 'Annuel', montant: 2000 },
-                { id: 'khitma3', nom: 'Magal', date: 'Annuel', montant: 2000 },
-                { id: 'khitma4', nom: 'Tabaski', date: 'Annuel', montant: 1500 },
-                { id: 'khitma5', nom: 'Korité', date: 'Annuel', montant: 1500 },
-                { id: 'appel', nom: 'Appel de Baye', date: 'Spécial', montant: 1000 }
-            ]
+            SCRIPT_URL: 'https://script.google.com/macros/s/AKfycbymM-ba_VVcqrtq7-iiCMnEXSVC8S33whoBg908ha8Qps5b1TgjlCYN6dbAoVz4MFQP/exec',
+            WAVE_LINK: 'https://pay.wave.com/m/M_sn_0WdGh370xGcP/c/sn/'
         };
 
-        // ========== VARIABLES ==========
-        const mois = ['Janvier', 'Février', 'Mars', 'Avril', 'Mai', 'Juin', 
-                      'Juillet', 'Août', 'Septembre', 'Octobre', 'Novembre', 'Décembre'];
+        // ========== DONNÉES ==========
+        const mois = ['Janvier', 'Février', 'Mars', 'Avril', 'Mai', 'Juin', 'Juillet', 'Août', 'Septembre', 'Octobre', 'Novembre', 'Décembre'];
         
-        let membre = null;
+        const evenements = [
+            'Gamou Taiba',
+            'Ziarre Baye',
+            'Keur Assane',
+            'Soukeur Koor',
+            'Tabaski',
+            'Ziarre Tamkharite',
+            'Maolid',
+            'Appel de Baye'
+        ];
+
+        // ========== VARIABLES ==========
+        let membre = { numero: '', section: '' };
         let selectedType = 'mensuelle';
         let selectedMonths = [];
         let selectedKhitma = null;
-        let cotisationsPaid = [];
 
         // ========== INITIALISATION ==========
         document.addEventListener('DOMContentLoaded', () => {
-            // Récupérer le numéro de membre depuis l'URL
             const urlParams = new URLSearchParams(window.location.search);
             const membreId = urlParams.get('membre') || urlParams.get('id');
             
             if (membreId) {
-                chargerMembre(membreId);
+                membre.numero = membreId;
+                document.getElementById('memberNumber').textContent = membreId;
+                
+                const section = urlParams.get('section');
+                if (section) {
+                    membre.section = section;
+                    document.getElementById('memberSection').textContent = 'Section: ' + section;
+                }
             } else {
-                showAlert('Numéro de membre manquant dans l\'URL', 'error');
-                document.getElementById('content').classList.add('hidden');
+                showAlert('Numéro de membre manquant', 'error');
             }
             
             genererMoisGrid();
-            genererKhitmaList();
+            genererKhitmaGrid();
         });
 
-        // ========== CHARGER MEMBRE ==========
-        async function chargerMembre(membreId) {
-            showLoading(true);
-            
-            try {
-                // Pour l'instant, on affiche juste le numéro
-                // Plus tard, on peut charger les infos depuis Google Sheets
-                membre = {
-                    numero: membreId,
-                    nom: 'Membre ' + membreId.split('-').pop()
-                };
-                
-                document.getElementById('memberNumber').textContent = membre.numero;
-                document.getElementById('memberName').textContent = membre.nom;
-                
-                // Charger les cotisations déjà payées (optionnel)
-                // await chargerCotisationsPaid(membreId);
-                
-            } catch (error) {
-                console.error('Erreur:', error);
-                showAlert('Erreur de chargement', 'error');
-            } finally {
-                showLoading(false);
-            }
-        }
-
-        // ========== GÉNÉRER GRID DES MOIS ==========
+        // ========== GÉNÉRER GRILLE DES MOIS ==========
         function genererMoisGrid() {
             const grid = document.getElementById('monthsGrid');
             const annee = new Date().getFullYear();
             
-            grid.innerHTML = mois.map((m, i) => {
-                const isPaid = cotisationsPaid.includes(`${annee}-${i+1}`);
-                return `
-                    <button class="option-btn ${isPaid ? 'paid' : ''}" 
-                            data-month="${i+1}" 
-                            data-year="${annee}"
-                            onclick="toggleMonth(this, ${i+1}, ${annee})"
-                            ${isPaid ? 'disabled' : ''}>
-                        ${m.substring(0, 3)}
-                    </button>
-                `;
-            }).join('');
+            grid.innerHTML = mois.map((m, i) => `
+                <button type="button" class="grid-btn" data-month="${i+1}" onclick="toggleMonth(this, ${i+1})">
+                    ${m.substring(0, 3)}
+                </button>
+            `).join('');
         }
 
-        // ========== GÉNÉRER LISTE KHITMA ==========
-        function genererKhitmaList() {
-            const list = document.getElementById('khitmaList');
+        // ========== GÉNÉRER GRILLE DES ÉVÉNEMENTS ==========
+        function genererKhitmaGrid() {
+            const grid = document.getElementById('khitmaGrid');
             
-            list.innerHTML = CONFIG.KHITMAS.map(k => `
-                <div class="khitma-item" data-id="${k.id}" onclick="selectKhitma('${k.id}')">
-                    <div>
-                        <div class="name">${k.nom}</div>
-                        <div class="date">${k.date}</div>
-                    </div>
-                    <div class="amount">${k.montant.toLocaleString()} F</div>
-                </div>
+            grid.innerHTML = evenements.map(evt => `
+                <button type="button" class="grid-btn" data-event="${evt}" onclick="selectKhitma(this, '${evt}')">
+                    ${evt}
+                </button>
             `).join('');
         }
 
@@ -571,137 +395,110 @@
         function selectType(type) {
             selectedType = type;
             
-            // Update buttons
             document.querySelectorAll('.type-btn').forEach(btn => {
                 btn.classList.toggle('active', btn.dataset.type === type);
             });
             
-            // Show/hide sections
-            document.getElementById('monthsSection').classList.toggle('hidden', type !== 'mensuelle');
-            document.getElementById('khitmaSection').classList.toggle('active', type === 'khitma');
+            document.getElementById('sectionMensuelle').classList.toggle('hidden', type !== 'mensuelle');
+            document.getElementById('sectionKhitma').classList.toggle('hidden', type !== 'khitma');
             
-            // Reset selections
+            // Reset
             selectedMonths = [];
             selectedKhitma = null;
-            document.querySelectorAll('.option-btn').forEach(btn => btn.classList.remove('selected'));
-            document.querySelectorAll('.khitma-item').forEach(item => item.classList.remove('selected'));
+            document.querySelectorAll('.grid-btn').forEach(btn => btn.classList.remove('selected'));
             
-            updateTotal();
+            updateSummary();
         }
 
         // ========== TOGGLE MOIS ==========
-        function toggleMonth(btn, month, year) {
-            if (btn.classList.contains('paid')) return;
-            
+        function toggleMonth(btn, month) {
             btn.classList.toggle('selected');
             
-            const key = `${year}-${month}`;
             if (btn.classList.contains('selected')) {
-                selectedMonths.push({ month, year, key });
+                selectedMonths.push(month);
             } else {
-                selectedMonths = selectedMonths.filter(m => m.key !== key);
+                selectedMonths = selectedMonths.filter(m => m !== month);
             }
             
-            updateTotal();
+            updateSummary();
         }
 
         // ========== SÉLECTIONNER KHITMA ==========
-        function selectKhitma(id) {
-            selectedKhitma = CONFIG.KHITMAS.find(k => k.id === id);
+        function selectKhitma(btn, event) {
+            // Désélectionner les autres
+            document.querySelectorAll('#khitmaGrid .grid-btn').forEach(b => b.classList.remove('selected'));
             
-            document.querySelectorAll('.khitma-item').forEach(item => {
-                item.classList.toggle('selected', item.dataset.id === id);
-            });
+            btn.classList.add('selected');
+            selectedKhitma = event;
             
-            updateTotal();
+            updateSummary();
         }
 
-        // ========== METTRE À JOUR TOTAL ==========
-        function updateTotal() {
-            let total = 0;
+        // ========== METTRE À JOUR RÉSUMÉ ==========
+        function updateSummary() {
+            const summaryText = document.getElementById('summaryText');
+            let text = 'Aucune sélection';
+            let isValid = false;
             
-            if (selectedType === 'mensuelle') {
-                total = selectedMonths.length * CONFIG.MONTANT_MENSUEL;
-            } else if (selectedKhitma) {
-                total = selectedKhitma.montant;
+            if (selectedType === 'mensuelle' && selectedMonths.length > 0) {
+                const annee = new Date().getFullYear();
+                const moisNoms = selectedMonths.map(m => mois[m-1]).join(', ');
+                text = `Cotisation: ${moisNoms} ${annee}`;
+                isValid = true;
+            } else if (selectedType === 'khitma' && selectedKhitma) {
+                text = `Khitma: ${selectedKhitma}`;
+                isValid = true;
             }
             
-            document.getElementById('totalAmount').textContent = total.toLocaleString();
-            document.getElementById('payBtn').disabled = total === 0;
+            summaryText.textContent = text;
+            document.getElementById('payBtn').disabled = !isValid;
         }
 
         // ========== PAYER AVEC WAVE ==========
         async function payerAvecWave() {
-            if (!membre) {
-                showAlert('Membre non identifié', 'error');
-                return;
+            let detail = '';
+            const annee = new Date().getFullYear();
+            
+            if (selectedType === 'mensuelle') {
+                detail = selectedMonths.map(m => mois[m-1] + ' ' + annee).join(', ');
+            } else {
+                detail = selectedKhitma;
             }
             
-            const total = selectedType === 'mensuelle' 
-                ? selectedMonths.length * CONFIG.MONTANT_MENSUEL 
-                : selectedKhitma?.montant || 0;
-            
-            if (total === 0) {
-                showAlert('Veuillez sélectionner une option', 'error');
-                return;
-            }
-            
-            // Préparer les données pour l'enregistrement
+            // Préparer les données
             const cotisationData = {
                 numero_membre: membre.numero,
-                nom: membre.nom,
+                section: membre.section,
                 type: selectedType,
-                detail: selectedType === 'mensuelle' 
-                    ? selectedMonths.map(m => `${mois[m.month-1]} ${m.year}`).join(', ')
-                    : selectedKhitma.nom,
-                montant: total,
+                detail: detail,
+                montant: 0, // Sera renseigné après paiement
                 date: new Date().toISOString(),
                 statut: 'en_attente'
             };
             
             try {
                 // Enregistrer dans Google Sheets
-                await enregistrerCotisation(cotisationData);
-                
-                // Rediriger vers Wave
-                window.location.href = CONFIG.WAVE_LINK;
-                
-            } catch (error) {
-                console.error('Erreur:', error);
-                // Rediriger quand même vers Wave
-                window.location.href = CONFIG.WAVE_LINK;
-            }
-        }
-
-        // ========== ENREGISTRER COTISATION ==========
-        async function enregistrerCotisation(data) {
-            try {
                 await fetch(CONFIG.SCRIPT_URL, {
                     method: 'POST',
                     mode: 'no-cors',
                     headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({
-                        action: 'create',
-                        data: data
-                    })
+                    body: JSON.stringify({ action: 'create', data: cotisationData })
                 });
-                console.log('Cotisation enregistrée');
+                
+                console.log('Cotisation enregistrée:', cotisationData);
             } catch (error) {
-                console.error('Erreur enregistrement:', error);
+                console.error('Erreur:', error);
             }
+            
+            // Rediriger vers Wave
+            window.location.href = CONFIG.WAVE_LINK;
         }
 
-        // ========== HELPERS ==========
-        function showLoading(show) {
-            document.getElementById('loading').classList.toggle('active', show);
-            document.getElementById('content').classList.toggle('hidden', show);
-        }
-
+        // ========== AFFICHER ALERTE ==========
         function showAlert(message, type) {
             const alert = document.getElementById('alert');
             alert.textContent = message;
-            alert.className = `alert ${type} active`;
-            setTimeout(() => alert.classList.remove('active'), 5000);
+            alert.className = `alert ${type}`;
         }
     </script>
 </body>
